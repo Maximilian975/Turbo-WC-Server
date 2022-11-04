@@ -1,0 +1,6 @@
+2022-10-26 13:07:43.614 main E/wse: Exception in thread "main" 
+2022-10-26 13:07:43.616 main E/wse: java.sql.SQLException: No suitable driver found for jdbc:mysql://localhost:3306/turbo_bathroom_db?user=root&password=&serverTimezone=GMT%2b2
+2022-10-26 13:07:43.616 main E/wse: 	at java.sql.DriverManager.getConnection(Unknown Source)
+2022-10-26 13:07:43.617 main E/wse: 	at java.sql.DriverManager.getConnection(Unknown Source)
+2022-10-26 13:07:43.617 main E/wse: 	at db.SQL_connection.<init>(SQL_connection.java:19)
+2022-10-26 13:07:43.617 main E/wse: 	at server.WC_server.main(WC_server.java:22)

@@ -1,0 +1,31 @@
+
+CREATE TABLE users(
+NAME varchar(256) PRIMARY KEY
+);
+
+CREATE TABLE bathrooms(
+NAME varchar(256) PRIMARY KEY
+);
+
+CREATE TABLE stamps(
+ID int(16) AUTO_INCREMENT PRIMARY KEY,
+DATE DATETIME,
+USER_NAME varchar(256),
+BATHROOM_NAME varchar(256),
+FOREIGN KEY (USER_NAME) REFERENCES users(NAME),
+FOREIGN KEY (BATHROOM_NAME) REFERENCES bathrooms(NAME)
+);
+
+/* populate */
+
+
+
+
+INSERT INTO users (NAME) VALUES ("Max"),("Martin"),("Juma"),("Josef"),("Casper");
+
+INSERT INTO bathrooms (NAME) VALUES ("ninja_warrior_RWC"),("ninja_warrior_WC"),("airbag_RWC"),("airbag_1"),("airbag_2"),("airbag_3");
+
+INSERT INTO stamps (USER_NAME, BATHROOM_NAME, DATE) VALUES ("Max","ninja_warrior_RWC","2022-10-26 10:07:00"),("Martin","ninja_warrior_RWC","2022-10-26 03:07:00"),("Juma","airbag_1","2022-10-25 10:10:00");
+
+
+
