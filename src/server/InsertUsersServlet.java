@@ -30,6 +30,7 @@ public class InsertUsersServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		//TODO return status variable too. 
 		response.writeHeader();
 		scanner.close();
