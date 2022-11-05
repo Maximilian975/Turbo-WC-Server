@@ -2,7 +2,6 @@ package server;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Map;
 import java.util.logging.Logger;
 
 import db.SQL_connection;

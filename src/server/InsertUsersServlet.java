@@ -20,7 +20,7 @@ public class InsertUsersServlet extends HttpServlet {
 		SQL_connection connection = WC_server.getConnect();
 		InputStream inputStream = request.getContent();
 		byte[] byteArray = StreamUtils.readAll(inputStream);
-		int status = -1; 
+		//int status = -1; 
 		Scanner scanner = new Scanner(new ByteArrayInputStream(byteArray));
 		scanner.useLocale(Locale.US);
 		String username = scanner.next();
