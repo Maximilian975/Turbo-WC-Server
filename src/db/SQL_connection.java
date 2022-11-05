@@ -5,12 +5,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import utils.Utils;
 
 
 public class SQL_connection {
@@ -18,9 +16,11 @@ public class SQL_connection {
 	Statement statement;
 
 	public SQL_connection() throws SQLException {
-		String URI = "jdbc:mysql://localhost:3306/turbo_bathroom_db?user=fredagsmys&password=123&serverTimezone=GMT%2b2";
+		String URI = "jdbc:mysql://localhost:3306/turbo_bathroom_db?autoReconnect=true&user=fredagsmys&password=123&serverTimezone=GMT%2b2";
 		connection = DriverManager.getConnection(URI);
 		statement = connection.createStatement();
+		
+		
 	}
 	
 	public int insert_stamp(String user, String wc, String date) throws SQLException{
@@ -65,10 +65,7 @@ public class SQL_connection {
 		return stamps;
 	}
 	public List<Stamp> get_latest_stamps()throws SQLException{
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss");  
-		LocalDateTime now = LocalDateTime.now();
-		String currDate = dtf.format(now);
-		System.out.println("CURRENT DATE==========" + currDate);
+		String currDate = Utils.getCurrTime();
 		String getString = String.format(
 				"SELECT USER_NAME, BATHROOM_NAME, DATE, TIMEDIFF(%s,DATE)"
 				+ " FROM stamps WHERE ID IN (SELECT MAX(ID) FROM stamps GROUP BY BATHROOM_NAME);",'"' + currDate + '"');
@@ -85,6 +82,22 @@ public class SQL_connection {
 			stamps.add(stamp);
 		}
 		return stamps;
+		
+	}
+	public Stamp get_latest_stamp(String bathroom) throws SQLException{
+		String currDate = Utils.getCurrTime();
+		String getString = String.format(
+				"SELECT USER_NAME, DATE, TIMEDIFF(%s,DATE)"
+				+ "FROM stamps WHERE BATHROOM_NAME = %s ORDER BY ID DESC LIMIT 1;",'"' + currDate + '"', '"' + bathroom + '"');
+		ResultSet resultSet = statement.executeQuery(getString);
+
+		String user, date, timeDiff;
+		user = resultSet.getString(1);
+		date = resultSet.getString(2);
+		timeDiff = resultSet.getString(3);
+		Stamp stamp = new Stamp(user, bathroom, date, timeDiff);
+	
+		return stamp;
 		
 	}
 	public int insert_user(String name) throws SQLException {
