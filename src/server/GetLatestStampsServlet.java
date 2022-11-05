@@ -2,12 +2,6 @@ package server;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -43,11 +37,11 @@ public class GetLatestStampsServlet extends HttpServlet {
 			    
 			    }
 				message += String.format("<li style=%s> %s rengjordes senast vid %s av %s"
-						+ " vilket är %d timmar och %d minuter sedan" + "</li>",color, stamp.bathroom, stamp.date,stamp.user, hrs, mins);
+						+ " vilket ï¿½r %d timmar och %d minuter sedan" + "</li>",color, stamp.bathroom, stamp.date,stamp.user, hrs, mins);
 			}
 		}
 		String html = String.format(
-				"<article>" + "<header><h1>De senaste städningarna av toaletterna på Turbo</h1>"
+				"<article>" + "<header><h1>De senaste stï¿½dningarna av toaletterna pï¿½ Turbo</h1>"
 						+ "<p>Gjord av Max Mattsson</p>" + "<ul>" + "%s" + "</ul>" + "</header>" + "</article>",
 				message);
 		byte[] byteMessage = html.getBytes();

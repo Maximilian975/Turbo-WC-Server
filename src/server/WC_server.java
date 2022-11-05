@@ -35,6 +35,8 @@ public class WC_server extends WSEServer{
 		manager.register("/GetStamps", GetStampsServlet.class);
 		manager.register("/GetBathrooms", GetBathroomsServlet.class);
 		manager.register("/GetLatestStamps", GetLatestStampsServlet.class);
+		manager.register("/GetLatestStamp", GetLatestStampServlet.class);
+		
 		addHttp(1307);
 	}
 	

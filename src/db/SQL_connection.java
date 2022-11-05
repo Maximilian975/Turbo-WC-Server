@@ -87,14 +87,16 @@ public class SQL_connection {
 	public Stamp get_latest_stamp(String bathroom) throws SQLException{
 		String currDate = Utils.getCurrTime();
 		String getString = String.format(
-				"SELECT USER_NAME, DATE, TIMEDIFF(%s,DATE)"
+				"SELECT USER_NAME, DATE, TIMEDIFF(%s,DATE) "
 				+ "FROM stamps WHERE BATHROOM_NAME = %s ORDER BY ID DESC LIMIT 1;",'"' + currDate + '"', '"' + bathroom + '"');
+	
 		ResultSet resultSet = statement.executeQuery(getString);
-
-		String user, date, timeDiff;
-		user = resultSet.getString(1);
-		date = resultSet.getString(2);
-		timeDiff = resultSet.getString(3);
+		String user = "", date = "", timeDiff = "";
+		if (resultSet.next()){
+			user = resultSet.getString(1);
+			date = resultSet.getString(2);
+			timeDiff = resultSet.getString(3);
+		}
 		Stamp stamp = new Stamp(user, bathroom, date, timeDiff);
 	
 		return stamp;
