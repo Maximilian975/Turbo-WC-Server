@@ -22,7 +22,6 @@ public class GetLatestStampServlet extends HttpServlet{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-        System.out.println(Utils.getMillis(stamp.timeDiff));
         byte[] msg = Utils.getMillis(stamp.timeDiff).getBytes();
         response.setContentLength(msg.length);
 		response.setContentType("utf-8");
