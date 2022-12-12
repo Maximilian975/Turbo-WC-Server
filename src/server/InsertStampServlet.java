@@ -23,16 +23,27 @@ public class InsertStampServlet extends HttpServlet{
 		byte[] byteArray = StreamUtils.readAll(inputStream);
 		//int status = -1; 
 		Scanner scanner = new Scanner(new ByteArrayInputStream(byteArray));
+		String bathroom = "";
+		while (scanner.hasNext()){
+			 bathroom += scanner.next() + " ";
+
+			 System.out.println(bathroom);
+		}
+		if (bathroom.length() > 0){
+			bathroom = bathroom.substring(0, bathroom.length()-1);
+		}
+		System.out.println(bathroom);
+		
 		scanner.useLocale(Locale.US);
-		String username = scanner.next();
-		String bathroom = scanner.next();
+		// String username = scanner.next(); //tog bort användarfunktion
+		
 		int status = -1;
-		Date date = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
-		String timestamp = "'" + format.format(date) + "'";
+		// Date date = new Date();
+		// SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+		// String timestamp = "'" + format.format(date) + "'";
 		try {
 			
-			 status = connection.insert_stamp(username, bathroom, timestamp);
+			 status = connection.insert_stamp(bathroom);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

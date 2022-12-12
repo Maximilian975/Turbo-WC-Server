@@ -36,8 +36,8 @@ public class GetLatestStampsServlet extends HttpServlet {
 			    	 color = '"' + "color:red" + '"';
 			    
 			    }
-				message += String.format("<li style=%s> %s rengjordes senast vid %s av %s"
-						+ " vilket �r %d timmar och %d minuter sedan" + "</li>",color, stamp.bathroom, stamp.date,stamp.user, hrs, mins);
+				message += String.format("<li style=%s> %s rengjordes senast vid %s"
+						+ " vilket �r %d timmar och %d minuter sedan" + "</li>",color, stamp.bathroom, stamp.date, hrs, mins);
 			}
 		}
 		String html = String.format(

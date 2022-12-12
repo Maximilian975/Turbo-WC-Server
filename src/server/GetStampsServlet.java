@@ -26,11 +26,11 @@ public class GetStampsServlet extends HttpServlet {
 		String message = "";
 		if (stamps.size() >0) {
 			for (Stamp stamp : stamps) {
-				message += "<li>" + stamp.user + " rengjorde " +  stamp.bathroom + " vid " + stamp.date + "</li>";
+				message += "<li>" + stamp.bathroom + "rengjordes vid " + stamp.date + "</li>";
 			}
 		}
 		String html = String.format("<article>"
-				+ "<header><h1>De senaste städningarna av toaletterna på Turbo</h1>"
+				+ "<header><h1>De senaste stï¿½dningarna av toaletterna pï¿½ Turbo</h1>"
 				+ "<p>Gjord av Max Mattsson</p>"
 				+ "<ul>"
 				+ "%s"
