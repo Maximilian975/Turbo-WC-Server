@@ -16,7 +16,9 @@ public class SQL_connection {
 	Connection connection;
 	Statement statement;
 	//MOVED HERE FROM SQL_connection
-	String URI = "jdbc:mysql://localhost:3306/turbo_bathroom_db?autoReconnect=true&user=fredagsmys&password=123&serverTimezone=GMT%2b2";
+	String URI = "jdbc:mysql://localhost:3306/turbo_bathroom_db?autoReconnect=true&user=root&password=Baggenq321!&serverTimezone=GMT%2b2"; //EC2
+	//String URI = "jdbc:mysql://localhost:3306/turbo_wc?autoReconnect=true&user=fredagsmys&password=123&serverTimezone=GMT%2b2"; //RPI
+
 
 	public SQL_connection() throws SQLException {
 		
